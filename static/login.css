@@ -1,0 +1,129 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* largura e altura dos elementos incluam bordas e preenchimento.*/
+  font-family: "Arial", sans-serif;
+}
+
+/* Fundo gradiente */
+body {
+  display: flex; /*centralizar o conteúdo*/
+  justify-content: center; /*Centraliza horizontalment*/
+  align-items: center; /*Centraliza verticalmente.*/
+  height: 100vh; /*Faz com que o corpo ocupe toda a altura da tela*/
+  background: linear-gradient(
+    135deg,
+    #1c4b68,
+    #6da3c7
+  ); /* fundo degradê diagonal*/
+}
+
+/* Container principal */
+.login-container {
+  text-align: center; /*Centraliza o texto dentro do container*/
+}
+
+/* Título */
+.login-title {
+  font-size: 28px;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /*Adiciona uma sombra */
+}
+
+/* Caixa de login */
+.login-box {
+  background: rgba(255, 255, 255, 0.1); /*Define um fundo transparente */
+  padding: 30px; /*espaçamento interno*/
+  border-radius: 10px; /*borda redonda*/
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /*Adiciona uma sombra ao redor*/
+  width: 320px;
+  backdrop-filter: blur(10px); /*Dá um efeito de vidro fosco no fundo*/
+}
+
+/* Avatar */
+.login-avatar {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-avatar img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+/*  (Usuário e Senha) */
+.login-input {
+  width: 100%; /*O campo ocupa 100% da largura disponível*/
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none; /*Remove as bordas*/
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/*Efeito ao Clicar no Campo*/
+.login-input:focus {
+  outline: none; /*Remove a borda azul padrão do navegador */
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Botão Login */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #0a263d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.login-button:hover {
+  background: #29658b;
+  transform: translateY(
+    -2px
+  ); /* O botão sobe levemente, criando um efeito de "clique".*/
+}
+/* Estilização do botão de mostrar senha */
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  left: 10px; /* Coloca o botão à esquerda */
+  bottom: -25px; /* Coloca o botão abaixo do campo */
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 0px;
+  padding: 0;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  display: none;
+  margin-top: 5px; /* Dá um pequeno espaço entre a mensagem de erro e o campo */
+}

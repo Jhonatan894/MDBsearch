@@ -1,0 +1,51 @@
+<!-- templates/login.html -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Mdb Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
+    <script src="{{ url_for('static', filename='login.js') }}" defer></script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1 class="login-title">Mdb Search</h1>
+      <div class="login-box">
+        <div class="login-avatar">
+          <img src="{{ url_for('static', filename='imagem_login-removebg-preview.png') }}" alt="Avatar" />
+        </div>
+
+        <!-- Campo de E-mail -->
+        <input
+          type="text"
+          class="login-input"
+          id="email"
+          placeholder="E-mail"
+        />
+        <span class="error-message" id="emailError">E-mail inválido</span>
+
+        <!-- Campo de Senha -->
+        <div class="password-container">
+          <input
+            type="password"
+            class="login-input"
+            id="password"
+            placeholder="Senha"
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            onclick="togglePassword()"
+          >
+            Mostrar senha
+          </button>
+        </div>
+        <span class="error-message" id="passwordError">Senha inválida</span>
+        <!-- Botão de Login -->
+        <button class="login-button" onclick="validateLogin()">Login</button>
+      </div>
+    </div>
+  </body>
+</html>

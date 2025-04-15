@@ -21,9 +21,6 @@ Pandas: Biblioteca Python para manipulação de dados, utilizada para processar 
 
 Werkzeug: Utilizado para a criptografia de senhas dos usuários, garantindo maior segurança.
 
-Flask-CORS: Middleware para permitir o compartilhamento de recursos entre diferentes origens, habilitando a comunicação entre o frontend e o backend.
-
 Frontend
 HTML/CSS/JavaScript: Linguagens de marcação e estilo usadas para construir a interface do usuário.
 
-Fetch API: Usada no frontend para enviar dados para o backend, como o envio de arquivos CSV via uma requisição POST.

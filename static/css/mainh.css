@@ -1,0 +1,171 @@
+/* pop-up depois do upload */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 998;
+}
+
+/* Caixa do pop-up */
+.popup {
+  background: #2e3d43;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-align: center;
+}
+
+/* Título do pop-up */
+.popup h2 {
+  margin-bottom: 20px;
+}
+
+/* Labels */
+.popup label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: 500;
+  color: #dfe6e9;
+  text-align: left;
+}
+
+/* Estilo dos selects */
+.popup select {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #3b4a50;
+  color: #fff;
+  border: 1px solid #5c6b73;
+  border-radius: 6px;
+  font-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2212%22%20viewBox%3D%220%200%2020%2012%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M2%202L10%2010L18%202%22%20stroke%3D%22white%22%20stroke-width%3D%222%22/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+}
+
+/* Estilo quando o select está em foco */
+.popup select:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 4px #4caf50;
+}
+
+/* Container dos botões */
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Botão Confirmar */
+#confirmSetorBtn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+#confirmSetorBtn:hover {
+  background-color: #43a047;
+}
+
+/* Botão Cancelar */
+#cancelSetorBtn {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+#cancelSetorBtn:hover {
+  background-color: #b0b0b0;
+}
+
+/* Ajustando a dashboard para ocupar todo o espaço */
+.dashboard {
+  display: flex;
+  flex-direction: column; /* Alterado para coluna, caso necessário */
+  width: 100%;
+  height: 100%;
+}
+.chart {
+  width: 95%;
+  margin: 0 auto; /* centraliza horizontalmente */
+  background: white;
+  height: 490px;
+  padding: 20px;
+  border-radius: 15px;
+  color: black;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+.file-col {
+  background-color: #ffffff1a;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(3, 0, 0);
+}
+.upload-table {
+  width: 100%;
+}
+
+.upload-table th,
+.upload-table td {
+  padding: 16px;
+  text-align: left;
+}
+
+.upload-table th {
+  font-weight: 600;
+  color: #333;
+}
+
+.help-btn:hover {
+  opacity: 0.15;
+}
+
+/* Esconder elementos até o upload */
+.info-display-container,
+.side-panel {
+  display: block;
+}
+
+/*.hidden {
+  display: none !important;
+}*/
+
+#upload-table-body tr {
+  border-bottom: 1px solid rgb(213, 212, 235);
+}
+
+#upload-table-body td {
+  padding: 10px;
+}
+
+#upload-table-body tr:hover {
+  background-color: #e0e0e0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}

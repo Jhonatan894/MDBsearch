@@ -1,0 +1,74 @@
+{
+  "conteudo": [
+    {
+      "CPF": "123.456.789-00",
+      "Nome": "Jo�o da Silva",
+      "email": "joao.silva@email.com",
+      "telefone": "(11) 91234-5678"
+    },
+    {
+      "CPF": "234.567.890-11",
+      "Nome": "Maria Oliveira",
+      "email": "maria.oliveira@email.com",
+      "telefone": "(21) 99876-5432"
+    },
+    {
+      "CPF": "345.678.901-22",
+      "Nome": "Carlos Pereira",
+      "email": "carlos.pereira@email.com",
+      "telefone": "(31) 98765-4321"
+    },
+    {
+      "CPF": "456.789.012-33",
+      "Nome": "Ana Souza",
+      "email": "ana.souza@email.com",
+      "telefone": "(41) 97654-3210"
+    },
+    {
+      "CPF": "567.890.123-44",
+      "Nome": "Rodrigo Martins",
+      "email": "rodrigo.martins@email.com",
+      "telefone": "(51) 96543-2109"
+    },
+    {
+      "CPF": "678.901.234-55",
+      "Nome": "Fernanda Lima",
+      "email": "fernanda.lima@email.com",
+      "telefone": "(61) 95432-1098"
+    },
+    {
+      "CPF": "789.012.345-66",
+      "Nome": "Pedro Alves",
+      "email": "pedro.alves@email.com",
+      "telefone": "(71) 94321-0987"
+    },
+    {
+      "CPF": "890.123.456-77",
+      "Nome": "Luciana Costa",
+      "email": "luciana.costa@email.com",
+      "telefone": "(81) 93210-9876"
+    },
+    {
+      "CPF": "901.234.567-88",
+      "Nome": "Marcos Santana",
+      "email": "marcos.santana@email.com",
+      "telefone": "(91) 92109-8765"
+    },
+    {
+      "CPF": "012.345.678-99",
+      "Nome": "Beatriz Ferreira",
+      "email": "beatriz.ferreira@email.com",
+      "telefone": "(11) 91098-7654"
+    },
+    {
+      "CPF": "123.456.789-00",
+      "Nome": "Maria Silva",
+      "email": "maria@email.com",
+      "telefone": "11999999999"
+    }
+  ],
+  "data": "2025-05-22",
+  "setor": "ADM",
+  "tipo": "Pessoa Física",
+  "usuario": "gerente"
+}

@@ -1,0 +1,175 @@
+/* --- POP-UP DEPOIS DO UPLOAD --- */
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 998;
+  transition: opacity 0.3s ease;
+}
+
+.popup {
+  background: #2e3d43;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-align: center;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Ativa o overlay e exibe o pop-up */
+.popup-overlay.active {
+  display: flex;
+}
+
+.popup-overlay.active .popup {
+  display: block;
+}
+
+/* Suavidade opcional (evita cliques quando invisível) */
+.popup-overlay:not(.active) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.popup h3 {
+  margin-bottom: 20px;
+}
+
+/* Select estilizado */
+.popup-select {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.popup select:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 4px #4caf50;
+}
+
+/* Botões */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+#confirmSetorBtn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+#confirmSetorBtn:hover {
+  background-color: #43a047;
+}
+
+#cancelSetorBtn {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+#cancelSetorBtn:hover {
+  background-color: #b0b0b0;
+}
+
+
+/* --- ESTILO GERAL (mantido do seu original) --- */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.chart {
+  width: auto;
+  margin: auto;
+  background: white;
+  height: auto;
+  padding: 2px;
+  color: black;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.file-col {
+  background-color: #ffffff1a;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(3, 0, 0);
+}
+
+.upload-table {
+  width: 100%;
+}
+
+.upload-table th,
+.upload-table td {
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.upload-table th {
+  font-weight: 600;
+  color: #333;
+}
+
+.upload-table thead {
+  background-color: #f0f0f0;
+  color: white;
+}
+
+#upload-table-body tr {
+  border-bottom: 1px solid rgb(213, 212, 235);
+}
+
+#upload-table-body td {
+  padding: 10px;
+}
+
+#upload-table-body tr:hover {
+  background-color: #e0e0e0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.help-btn:hover {
+  opacity: 0.15;
+}

@@ -1,22 +1,23 @@
 # models/user.py
 
 from models.database import db
-from werkzeug.security import generate_password_hash, check_password_hash
+import hashlib
 
 class User(db.Model):
-    __tablename__ = 'usuarios'  # Use 'usuarios' para corresponder ao banco
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    senha = db.Column(db.String(255), nullable=False) 
-    permissao = db.Column(db.Enum('usuario', 'gerente', name='permissoes'), nullable=False)
-    
-    def set_password(self, senha):
-        self.senha = generate_password_hash(senha)
-    
-    def check_password(self, senha):
-        return check_password_hash(self.senha, senha)
-    
-    def __repr__(self):
-        return f"<User {self.nome}>"
+    __tablename__ = 'usuarios'
 
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(50), nullable=False)
+    matricula = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    senha = db.Column(db.String(200), nullable=False)  # A senha deve ter espaço suficiente para armazenar o sha256
+    permissao = db.Column(db.String(50), nullable=False)
+    funcao = db.Column(db.String(200), nullable=False)
+
+ # Gera o hash da senha com sha256
+    def set_password(self, password):
+        self.senha = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+    # Verifica se a senha fornecida corresponde ao hash
+    def check_password(self, password):
+        return self.senha == hashlib.sha256(password.encode('utf-8')).hexdigest()

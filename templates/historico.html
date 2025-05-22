@@ -1,0 +1,105 @@
+<!-- templates/historico.html -->
+
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Histórico</title>
+  <link rel="icon"
+    href="png-transparent-line-chart-multicolored-miscellaneous-infographic-angle-thumbnail-removebg-preview.png" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/historico.css') }}">
+
+  <script src="{{ url_for('static', filename='js/historico.js') }}" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Barra Lateral -->
+  <div class="sidebar">
+    <h1 class="logo">
+      <a href="/" class="logo-link" style="color: inherit; text-decoration: none;">Mdb</a>
+    </h1>
+
+    <nav class="menu">
+
+      <!-- Botão Acesso -->
+      <a href="/acesso" class="menu-item">
+        <div class="acesso-icon">
+          <i class="fas fa-key"></i>
+        </div>
+        Acesso
+      </a>
+
+      
+
+      <!-- Botão Cadastro -->
+      <a href="/cadastro" class="menu-item">
+        <div class="cadastro-icon">
+          <i class="fas fa-user-plus"></i>
+        </div>
+        Cadastro
+      </a>
+    </nav>
+    <input type="button" id="cadastro" style="display: none" />
+    </nav>
+
+    <form action="{{ url_for('logout') }}" method="POST">
+      <button type="submit" class="logout-btn">↪ Logout</button>
+    </form>
+    <!-- Informações do usuário -->
+    <div class="user-info">
+      <p>Nome: <strong id="user-nome">{{ user_data.nome }}</strong></p>
+      <p>Permissão: <strong id="user-permissao">{{ user_data.permissao }}</strong></p>
+      <p>Função: <strong id="user-funcao">{{ user_data.funcao }}</strong></p>
+    </div>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <main class="main">
+    <!-- Seção do chart (agora começa oculta) -->
+    <section class="section hidden" id="upload-section">
+      <div class="chart">
+        <table class="upload-table">
+          <thead>
+            <tr>
+              <th>Planilha</th>
+              <th>Setor</th>
+              <th>Data</th>
+              <th>Tipo</th>
+              <th>Usuário</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+
+          <tbody id="upload-table-body">
+            <!-- Arquivos irão ser adicionados dinamicamente aqui -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <a href="/informacao" class="footer">
+    <footer class="footer"></footer>
+    <div class="user-options">
+      <button class="help-btn">❔</button>
+    </div>
+    </footer>
+  </a>
+
+  <div class="popup" id="popup-confirm">
+    <div class="popup-content">
+      <p>Tem certeza que deseja excluir?</p>
+      <div class="popup-buttons">
+        <button id="confirm-yes" class="confirm-btn">Sim</button>
+        <button id="confirm-no" class="cancel-btn">Não</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

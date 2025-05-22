@@ -7,10 +7,20 @@ body {
   color: white;
   height: 100vh; /* Ocupa 100% da altura da tela */
 }
+/* Estilização da Sidebar (painel lateral) */
+.sidebar {
+  width: 180px;
+  background-color: #2e3d43;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: width 0.3s;
+}
 
 /* Estilização do Pop-up (caixa modal) */
 .popup {
-  display: none;  
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -58,7 +68,9 @@ body {
   border-radius: 5px;
   font-weight: bold;
   transition: background-color 0.3s;
-  
+}
+.top-btn export-btn {
+  color: #ccc;
 }
 
 /* Botão "Enviar" */
@@ -71,23 +83,6 @@ body {
   border-radius: 5px;
   font-weight: bold;
   transition: background-color 0.3s;
-}
-
-/* Efeito hover nos botões */
-.popup-content .cancel-btn:hover,
-.popup-content button:hover {
-  background-color: #0056b3; /* Muda a cor para um tom mais escuro ao passar o mouse */
-}
-
-/* Estilização da Sidebar (painel lateral) */
-.sidebar {
-  width: 250px;
-  background-color: #2e3d43;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  transition: width 0.3s;
 }
 
 /* Estilização dos botões do menu */
@@ -105,26 +100,52 @@ body {
   gap: 5px;
   padding: 10px;
   border-radius: 5px;
-  transition: background 0.3s;
+  transition: all 0.3s ease; /* Transição suave para tudo */
+  font-size: 17px;
 }
 
-/* Efeito hover nos itens do menu */
+/* Efeito hover: elevação + fundo translúcido + sombra */
 .menu-item:hover {
-  background: rgba(173, 216, 230, 0.5);
+  transform: translateY(-3px); /* Leve elevação */
+  background: rgba(255, 255, 255, 0.12); /* Transparência */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  opacity: 0.9; /* Um toque de suavidade */
 }
 
-/* Botão de logout com sombra */
 .logout-btn {
-  background: #ffffff1a;
+  background: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
   border: none;
-  padding: 10px;
+  padding: 13px 40px;
   color: white;
   cursor: pointer;
   border-radius: 10px;
-  text-align: left;
-  font-size: 18px;
+  font-size: 16px; /* Corrigido para 16px como antes */
   font-weight: bold;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra leve */
+  transition: all 0.3s ease;
+  text-align: left; /* Alinha o texto à esquerda */
+  width: 100%; /* Ocupa toda a largura da sidebar */
+}
+.logout-btn:hover {
+  transform: translateY(-3px); /* Leve elevação */
+  background: rgba(255, 255, 255, 0.2); /* Destaque no hover */
+  opacity: 0.95;
+}
+.user-info {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.user-info p {
+  margin: 4px 0;
+}
+
+.user-info span {
+  font-weight: bold;
 }
 
 /* Estrutura principal do conteúdo */
@@ -139,7 +160,7 @@ body {
 .top-bar {
   display: flex;
   justify-content: space-around;
-  background: white;
+  background: rgb(255, 255, 255);
   padding: 15px;
   border-radius: 15px;
   margin-bottom: 20px;
@@ -154,54 +175,112 @@ body {
   cursor: pointer;
 }
 
+.upload-icon img {
+  width: 30px; /* Tamanho da imagem */
+  height: 30px; /* Mesmo valor para manter proporção */
+
+  vertical-align: middle; /* Alinha verticalmente com o texto */
+}
+
 /* Estilização do botão de upload */
 .upload-btn {
   cursor: pointer;
   padding: 10px 20px;
   background-color: white;
-  color: #2e3d43;
+  color: #00070a;
   border-radius: 8px;
   font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espaço entre imagem e texto */
 }
 
-.upload-btn:hover {
-  background-color: #f0f0f0;
-  border-color: #007bff;
+.download-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: white;
+  color: #00070a;
+  border-radius: 8px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espaço entre imagem e texto */
+}
+.download-icon img {
+  width: 30px; /* Tamanho da imagem */
+  height: 30px; /* Mesmo valor para manter proporção */
+
+  vertical-align: middle; /* Alinha verticalmente com o texto */
 }
 
+.acesso-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: white;
+  color: #00070a;
+  border-radius: 8px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espaço entre imagem e texto */
+}
+
+.acesso-icon img {
+  width: 30px; /* Tamanho da imagem */
+  height: 30px; /* Mesmo valor para manter proporção */
+
+  vertical-align: middle; /* Alinha verticalmente com o texto */
+}
 /* Seção do Dashboard */
 .section {
   display: flex;
   gap: 20px;
 }
 
-.chart {
-  flex: 2;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
-  height: 100%; /* Garantir que ocupe toda a altura do container */
-}
-
-/* Painel Lateral */
-.side-panel {
-  flex: 1;
-  background: white;
-  border-radius: 15px;
-  padding: 15px;
-  overflow-y: auto;
-  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
-  color: black;
-  height: calc(100vh - 20px); /* Ajusta para evitar cortes na parte inferior */
-  display: flex;
-  flex-direction: column;
-}
+/* Ajustando a dashboard para ocupar todo o espaço */
 .dashboard {
   display: flex;
-  flex-direction: row; /* Elementos lado a lado */
-  gap: 20px; /* Espaço entre o gráfico e o painel lateral */
-  width: 100%; /* Ocupar toda a largura */
-  height: 100%; /* Ocupar toda a altura da tela */
+  flex-direction: column; /* Alterado para coluna, caso necessário */
+  width: 100%;
+  height: 100%;
+}
+
+.chart {
+  width: 95%;
+  margin: 0 auto; /* centraliza horizontalmente */
+  background: white;
+  height: 490px;
+  padding: 20px;
+  border-radius: 15px;
+  color: black;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.file-col {
+  background-color: #ffffff1a;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(3, 0, 0);
+}
+.upload-table {
+  width: 100%;
+}
+
+.upload-table th,
+.upload-table td {
+  padding: 16px;
+  text-align: left;
+}
+
+.upload-table th {
+  font-weight: 600;
+  color: #333;
 }
 
 #topics-container {
@@ -230,7 +309,6 @@ body {
   font-size: 16px;
   font-weight: bold;
 }
-
 
 .cpf-selection-popup {
   position: fixed;
@@ -279,9 +357,19 @@ body {
   background: red !important;
   font-weight: bold;
 }
-
-
-
+.user-options {
+  position: fixed; /* Fixa no rodapé */
+  bottom: 10px; /* Alinha no final da página */
+  left: 20px; /* Alinha à esquerda */
+  background-color: #2e3d43; /* Cor de fundo da barra */
+  display: flex; /* Alinha os itens horizontalmente */
+  align-items: center; /* Alinha os itens verticalmente */
+  padding: 0px 0px; /* Espaçamento interno */
+  color: white; /* Cor do texto */
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0%;
+}
 
 /* Botões do rodapé */
 .help-btn,
@@ -296,7 +384,7 @@ body {
 
 .help-btn:hover,
 .settings-btn:hover {
-  opacity: 0.8;
+  opacity: 0.15;
 }
 
 .user-name {
@@ -367,4 +455,77 @@ body {
 /* Escondendo o menu com a classe 'hidden' */
 .menu.hidden {
   display: none;
+}
+.top-btn:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/*AQUI ESTA A FUNÇÃO QUE DEIXA O CHART OCULTO PELO CSS, AGORA VAI NO JS*/
+
+/*.hidden {
+  display: none !important;
+}*/
+
+#upload-table-body tr {
+  border-bottom: 1px solid rgb(213, 212, 235);
+}
+
+#upload-table-body td {
+  padding: 10px;
+}
+
+#upload-table-body tr:hover {
+  background-color: #e0e0e0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #fff;
+  color: #1a237e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}
+.popup-content select {
+  margin-bottom: 10px; /* 🟢 Diminui o espaço abaixo do select */
+}
+
+/* Botão Confirmar verde */
+#confirmSetorBtn {
+  background-color: #4caf50; /* Verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Botão Cancelar (opcional) */
+#cancelSetorBtn {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
 }

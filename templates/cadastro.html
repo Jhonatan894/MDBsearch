@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro do Usuário</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+  <script src="{{ url_for('static', filename='js/cadastro.js') }}" defer></script>
+  <link rel="icon" href="png-transparent-line-chart-multicolored-miscellaneous-infographic-angle-thumbnail-removebg-preview.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <h1 class="logo">
+      <a href="/" style="text-decoration: none; color: inherit;">Mdb</a>
+    </h1>
+
+    <!-- Botões de navegação -->
+    <a href="/acesso" class="menu-item">
+      <div class="acesso-icon">
+        <i class="fas fa-key"></i>
+      </div>
+      Acesso
+    </a>
+    <a href="/historico" class="menu-item">
+      <div class="historico-icon">
+        <i class="fas fa-history"></i>
+      </div>
+      Histórico
+    </a>
+
+    <!-- Botão de logout -->
+    <form action="{{ url_for('logout') }}" method="POST">
+      <button type="submit" class="logout-btn">↪ Logout</button>
+    </form>
+
+    <!-- Informações do usuário logado -->
+    <div class="user-info">
+      <p>Nome: <strong id="user-nome">{{ user_data.nome }}</strong></p>
+      <p>Permissão: <strong id="user-permissao">{{ user_data.permissao }}</strong></p>
+      <p>Função: <strong id="user-funcao">{{ user_data.funcao }}</strong></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Cadastro do usuário</h1>
+    <form id="formCadastro">
+      <!-- Nome completo -->
+      <div class="form-row">
+        <div class="input-group">
+          <label>Nome completo:</label>
+          <input type="text" name="nome" placeholder="Digite o nome completo" required />
+        </div>
+      </div>
+
+      <!-- Matrícula e Email -->
+      <div class="form-row">
+        <div class="input-group">
+          <label>Matrícula:</label>
+          <input type="number" name="matricula" placeholder="Digite a matrícula" required />
+        </div>
+        <div class="input-group">
+          <label>Email:</label>
+          <input type="email" name="email" placeholder="Digite o Email" required />
+        </div>
+      </div>
+
+      <!-- Função e Tipo de conta -->
+      <div class="form-row">
+        <div class="input-group">
+          <label>Função:</label>
+          <input type="text" name="funcao" placeholder="Digite a função" required />
+        </div>
+        <div class="input-group">
+          <label>Tipo de conta:</label>
+          <input type="text" name="permissao" placeholder="Digite o tipo de conta" required />
+        </div>
+      </div>
+
+      <!-- Senha e Confirmar senha -->
+      <div class="form-row">
+        <div class="input-group">
+          <label>Senha:</label>
+          <input type="password" name="password" placeholder="Digite a senha" required />
+        </div>
+        <div class="input-group">
+          <label>Confirmar senha:</label>
+          <input type="password" name="confirm_password" placeholder="Confirme a senha" required />
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="buttons">
+        <button type="submit" class="salvar">Salvar</button>
+        <button type="reset" class="cancelar">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Rodapé -->
+  <a href="/informacao" class="footer">
+    <footer class="footer"></footer>
+    <div class="user-options">
+      <button class="help-btn">❔</button>
+    </div>
+    </footer>
+  </a>
+</body>
+
+</html>

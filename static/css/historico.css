@@ -1,0 +1,460 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  background-color: white; /* Fundo branco */
+  color: #2e3d43; /* Cor do texto principal */
+  min-height: 100vh; /* Garante que o body ocupe pelo menos a altura da viewport */
+}
+
+/* Estilização do Pop-up de Envio de Dados */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 30px;
+  width: 350px;
+  border-radius: 15px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: #2e3d43;
+  font-weight: bold;
+}
+
+.popup-content input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.popup-content .cancel-btn {
+  background-color: #ff5c5c;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+/* Botão de Enviar */
+.popup-content button {
+  background-color: #007bff;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 180px;
+  background-color: #2e3d43;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: width 0.3s;
+  height: 100vh; /* Altura total da viewport */
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 8px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-size: 17px;
+}
+
+.menu-item:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 13px 40px;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0.95;
+}
+
+.user-info {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.user-info p {
+  margin: 4px 0;
+}
+
+.user-info span {
+  font-weight: bold;
+}
+
+/* Conteúdo Principal */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-left: 220px;
+  background-color: white;
+}
+
+/* Barra superior */
+.top-bar {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.top-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #2e3d43;
+}
+
+.top-btn:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.upload-icon img {
+  width: 30px; /* Tamanho da imagem */
+  height: 30px; /* Mesmo valor para manter proporção */
+  vertical-align: middle; /* Alinha verticalmente com o texto */
+}
+
+/* Estilização do botão de upload */
+.upload-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: white;
+  color: #00070a;
+  border-radius: 8px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espaço entre imagem e texto */
+}
+
+.download-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: white;
+  color: #00070a;
+  border-radius: 8px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espaço entre imagem e texto */
+}
+
+.download-icon img {
+  width: 30px; /* Tamanho da imagem */
+  height: 30px; /* Mesmo valor para manter proporção */
+  vertical-align: middle; /* Alinha verticalmente com o texto */
+}
+
+.acesso-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: white;
+  color: #00070a;
+  border-radius: 8px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espaço entre imagem e texto */
+}
+
+.acesso-icon img {
+  width: 30px; /* Tamanho da imagem */
+  height: 30px; /* Mesmo valor para manter proporção */
+  vertical-align: middle; /* Alinha verticalmente com o texto */
+}
+
+/* Dashboard */
+.section {
+  width: auto;
+  height: auto;
+  display: block;
+  padding: 0; /* Aumenta o padding */
+}
+
+.chart {
+  width: auto;
+  margin: auto;
+  background: white;
+  height: auto;
+  padding: 0;
+
+  color: black;
+}
+
+.upload-table {
+  width: 100%;
+  border-collapse: separate; /* Alterado de collapse para separate */
+  border-spacing: 0;
+  text-align: left;
+  overflow: hidden; /* Para as bordas arredondadas funcionarem */
+  margin-top: 0;
+}
+.upload-table thead {
+  background-color: #f0f0f0; /* Cor de fundo igual à sidebar */
+  color: white; /* Texto branco */
+}
+
+.upload-table th,
+.upload-table td {
+  padding: 10px 15px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.upload-table th {
+  color: #2e3d43;
+  font-weight: 600;
+}
+
+.upload-table td {
+  font-weight: 400;
+}
+
+#upload-table-body tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Rodapé */
+.footer {
+  position: fixed;
+  bottom: 10px;
+  left: 220px; /* Alinhado com o conteúdo principal */
+  background-color: white; /* Fundo branco para combinar */
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: #2e3d43; /* Cor do texto para contrastar */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.user-options {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  background-color: #2e3d43;
+  display: flex;
+  align-items: center;
+  padding: 0px 0px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0%;
+}
+
+.help-btn,
+.settings-btn,
+.user-name {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.help-btn:hover,
+.settings-btn:hover {
+  opacity: 0.15;
+}
+
+.user-name {
+  font-size: 16px;
+}
+
+/* Elementos adicionais */
+.file-list {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.file-list li {
+  background: #ffffff1a;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.info-display-container,
+.side-panel,
+.cpf-input-container {
+  display: block;
+}
+
+.info-display-container.visible,
+.side-panel.visible,
+.cpf-input-container.visible {
+  display: block;
+}
+
+.logo {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 28px;
+  font-weight: 500;
+  color: white;
+}
+.upload-icon,
+.acesso-icon,
+.historico-icon,
+.cadastro-icon {
+  width: 20px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.upload-icon img,
+.acesso-icon img,
+.historico-icon img,
+.cadastro-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ff5c5c; /* Cor vermelha para a lixeira */
+  font-size: 18px;
+  padding: 5px 10px;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.remove-btn:hover {
+  transform: scale(1.2);
+  color: #ff0000; /* Vermelho mais intenso no hover */
+}
+
+.remove-btn i {
+  font-size: 1.2em;
+}
+.popup-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.confirm-btn {
+  background-color: #4caf50; /* Verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.confirm-btn:hover {
+  background-color: #45a049; /* Verde mais escuro no hover */
+}
+
+.cancel-btn {
+  background-color: #f44336; /* Vermelho */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f; /* Vermelho mais escuro no hover */
+}

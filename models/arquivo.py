@@ -10,8 +10,5 @@ class Arquivo(db.Model):
     nome_arquivo = db.Column(db.String(255), nullable=False)
     data_envio = db.Column(db.TIMESTAMP, default=db.func.current_timestamp())
 
-    # Relacionamento com o modelo User
-    usuario = db.relationship('User', backref='arquivos', lazy=True)
-
     def __repr__(self):
         return f"<Arquivo {self.nome_arquivo}>"

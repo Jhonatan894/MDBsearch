@@ -2,8 +2,8 @@
 
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()  # Apenas inicializa o objeto do banco
+db = SQLAlchemy()  
 
 def init_app(app):
-    """Configura o banco de dados e o associa ao app Flask"""
+    """associando ao app flask"""
     db.init_app(app)

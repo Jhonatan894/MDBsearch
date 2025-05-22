@@ -1,0 +1,346 @@
+/* Configuração geral */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  background-color: white; /* Fundo branco */
+  color: #2e3d43; /* Cor do texto principal */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 180px;
+  background-color: #2e3d43;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: width 0.3s;
+  height: 100vh; /* Altura total da viewport */
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 8px 0 10px rgba(0, 0, 0, 0.1);
+}
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-left: 220px;
+  background-color: white;
+}
+
+/* Logo */
+.logo {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Botões do Menu */
+.menu-item {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-size: 17px;
+}
+.menu-item:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+/* Botão Logout */
+.logout-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 13px 40px;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  text-align: left;
+  width: 100%;
+}
+.logout-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0.95;
+}
+.upload-icon,
+.acesso-icon,
+.historico-icon,
+.cadastro-icon {
+  width: 20px;
+  height: 28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.upload-icon img,
+.acesso-icon img,
+.historico-icon img,
+.cadastro-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+.logout-btn {
+  background: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
+  border: none;
+  padding: 13px 40px;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 16px; /* Corrigido para 16px como antes */
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra leve */
+  transition: all 0.3s ease;
+  text-align: left; /* Alinha o texto à esquerda */
+  width: 100%; /* Ocupa toda a largura da sidebar */
+}
+.logout-btn:hover {
+  transform: translateY(-3px); /* Leve elevação */
+  background: rgba(255, 255, 255, 0.2); /* Destaque no hover */
+  opacity: 0.95;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  font-size: 17px;
+}
+
+/* Efeito hover para todos os itens */
+.menu-item:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Mantém o destaque no item ativo */
+.menu-item.active {
+  background: rgba(255, 255, 255, 0.1); /* Igual ao hover */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Igual ao hover */
+  font-weight: bold; /* Deixa o texto em negrito */
+  transform: translateY(-2px); /* Mantém a leve elevação */
+}
+
+.top-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Opções do usuário */
+.user-options {
+  position: fixed; /* Fixa no rodapé */
+  bottom: 10px; /* Alinha no final da página */
+  left: 20px; /* Alinha à esquerda */
+  background-color: #2e3d43; /* Cor de fundo da barra */
+  display: flex; /* Alinha os itens horizontalmente */
+  align-items: center; /* Alinha os itens verticalmente */
+  padding: 0px 0px; /* Espaçamento interno */
+  color: white; /* Cor do texto */
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0%;
+}
+
+.help-btn,
+.settings-btn,
+.user-name {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 3px;
+  gap: 5px;
+  margin-right: 10px;
+}
+
+.help-btn:hover,
+.settings-btn:hover {
+  opacity: 0.15;
+}
+
+.user-name {
+  font-size: 16px;
+}
+
+.user-info {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.user-info p {
+  margin: 4px 0;
+}
+
+.user-info span {
+  font-weight: bold;
+}
+
+/* Container do formulário */
+.container {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin: 40px auto;
+  width: 800px; /* Aumenta a largura */
+  height: 500px; /* Diminui a altura */
+
+  overflow-y: auto; /* Se o conteúdo passar da altura, adiciona rolagem */
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.input-group {
+  margin-bottom: 15px;
+  padding: 0 10px; /* Adiciona um espaçamento lateral */
+  outline: none;
+}
+
+.input-group label {
+  display: block;
+  font-size: 16px;
+}
+.input-group input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #d3e3e6;
+}
+
+.input-group input {
+  border: 2px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #160946;
+  box-shadow: 0px 0px 8px rgba(5, 13, 53, 0.5);
+}
+
+/* Botões */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+.salvar {
+  background-color: #4caf50;
+  color: white;
+}
+
+.cancelar {
+  background-color: #ccc;
+  color: black;
+}
+button:hover {
+  opacity: 0.8;
+}
+.footer {
+  position: fixed;
+  bottom: 10px;
+  left: 220px; /* Alinhado com o conteúdo principal */
+  background-color: white; /* Fundo branco para combinar */
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: #2e3d43; /* Cor do texto para contrastar */
+  font-size: 16px;
+  font-weight: bold;
+}
+button {
+  transition: all 0.3s ease-in-out;
+}
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #d3e3e6;
+}

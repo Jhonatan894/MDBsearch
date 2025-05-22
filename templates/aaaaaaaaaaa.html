@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acesso</title>
+
+    <!-- Ícone da página -->
+    <link
+      rel="icon"
+      href="png-transparent-line-chart-multicolored-miscellaneous-infographic-angle-thumbnail-removebg-preview.png"
+    />
+
+    <!-- Ícones Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="acesso.css" />
+    <link rel="stylesheet" href="sidebarh.css" />
+    <link rel="stylesheet" href="mains.css" />
+
+    <!--iconi-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Barra lateral esquerda com navegação -->
+    <aside class="sidebar">
+      <h1 class="logo">Mdb</h1>
+
+      <nav class="menu">
+        <!-- Botão Upload -->
+        <label for="upload" class="menu-item">
+          <div class="upload-icon">
+            <i class="fas fa-cloud-upload-alt"></i>
+          </div>
+          Upload
+        </label>
+
+        <!-- Botão Acesso -->
+        <label for="acesso" class="menu-item">
+          <div class="acesso-icon">
+            <i class="fas fa-key"></i>
+          </div>
+          Acesso
+        </label>
+
+        <!-- Botão Histórico -->
+        <label for="historico" class="menu-item">
+          <div class="historico-icon">
+            <i class="fas fa-history"></i>
+          </div>
+          Histórico
+        </label>
+
+        <!-- Botão Cadastro -->
+        <label for="cadastro" class="menu-item">
+          <div class="cadastro-icon">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          Cadastro
+        </label>
+      </nav>
+
+      <!-- Botão de logout (envia POST para encerrar a sessão) -->
+      <form action="{{ url_for('logout') }}" method="POST">
+        <button type="submit" class="logout-btn">↪ Logout</button>
+      </form>
+
+      <!-- Informações do usuário logado -->
+      <div class="user-info">
+        <p>Nome: <strong id="user-name">---</strong></p>
+        <p>Tipo: <strong id="user-role">---</strong></p>
+        <p>Função: <strong id="user-function">---</strong></p>
+      </div>
+    </aside>
+
+    <!-- Área principal do conteúdo -->
+    <div class="content">
+      <!-- Container da planilha (visível via JS ao interagir) -->
+      <div id="planilha-container" style="display: none">
+        <div id="planilha-controles">
+          <!-- Botões para interações com a planilha -->
+          <button onclick="abrirPopupColunas()">Adicionar Colunas</button>
+          <button onclick="salvarAlteracoes()">Salvar Alterações</button>
+        </div>
+        <div id="planilha"></div>
+      </div>
+
+      <!-- Lista de planilhas existentes (tabela inicial) -->
+      <div class="table-container" id="lista-planilhas">
+        <table class="upload-table">
+          <thead>
+            <tr>
+              <th>Planilha</th>
+              <th>Setor</th>
+              <th>Data</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody id="planilhas">
+            <tr data-tipo="Pessoa fisica">
+              <td>Financeiro</td>
+              <td>Análise</td>
+              <td>2025-04-07</td>
+              <td>Pessoa fisica</td>
+            </tr>
+            <tr data-tipo="Empresarial">
+              <td>RH</td>
+              <td>Recrutamento</td>
+              <td>2025-04-06</td>
+              <td>Empresarial</td>
+            </tr>
+            <tr data-tipo="Empresarial">
+              <td>TI</td>
+              <td>Infraestrutura</td>
+              <td>2025-04-05</td>
+              <td>Empresarial</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Popups de interação -->
+    <!-- CPF/CNPJ -->
+    <div class="popup" style="display: none" id="popup-documento-identificacao">
+      <div class="popup-content">
+        <h3>Insira o <span id="tipo-doc-dinamico">CPF/CNPJ</span>:</h3>
+        <input
+          type="text"
+          id="input-doc-identificacao"
+          placeholder="Digite o número"
+        />
+        <button onclick="mostrarPopupSelecaoCampos()">OK</button>
+      </div>
+    </div>
+
+    <!-- Seleção de campos do CSV -->
+    <div class="popup" style="display: none" id="popup-selecao-campos">
+      <div class="popup-content">
+        <h3>Selecione os campos do CSV:</h3>
+        <div id="checkbox-campos"></div>
+        <button onclick="confirmarCamposSelecionados()">OK</button>
+      </div>
+    </div>
+
+    <!-- Seleção tipo de pessoa -->
+    <div class="popup" style="display: none" id="popup">
+      <div class="popup-content">
+        <h3>Selecione o tipo de pessoa:</h3>
+        <button onclick="selecionarTipo('fisica')">Pessoa Física</button>
+        <button onclick="selecionarTipo('juridica')">Pessoa Jurídica</button>
+      </div>
+    </div>
+
+    <!-- Inserir CPF/CNPJ após tipo -->
+    <div class="popup" style="display: none" id="popup-documento">
+      <div class="popup-content">
+        <h3>Insira o <span id="tipo-doc">CPF/CNPJ</span>:</h3>
+        <input type="text" id="input-doc" placeholder="Digite o número" />
+        <button onclick="mostrarSelecaoCampos()">OK</button>
+      </div>
+    </div>
+
+    <!-- Escolha manual de campos do CSV -->
+    <div class="popup" style="display: none" id="popup-campos">
+      <div class="popup-content">
+        <h3>Selecione os campos do CSV:</h3>
+        <label><input type="checkbox" value="Nome" /> Nome</label>
+        <label><input type="checkbox" value="Endereço" /> Endereço</label>
+        <label><input type="checkbox" value="Telefone" /> Telefone</label>
+        <button onclick="abrirVisualizacao()">OK</button>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="user-options">
+        <button class="help-btn">❔</button>
+      </div>
+    </footer>
+
+    <!-- Scripts da página -->
+    <script src="acesso.js"></script>
+  </body>
+</html>

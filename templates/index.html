@@ -1,81 +1,148 @@
-
-<!-- templates/index.html -->
-
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MDB Search</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <script src="{{ url_for('static', filename='index.js') }}" defer></script>
-  </head>
-  <body>
-    <!-- Barra Lateral -->
-    <div class="sidebar">
-      <h1 class="logo">Mdb</h1>
-      <nav class="menu">
-        <a href="#" class="menu-item" id="Search">🔍 Pesquisa</a>
-        <a href="#" class="menu-item">📋 Histórico</a>
-        <a href="#" class="menu-item">👤 Acesso</a>
-      </nav>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MDB Search</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/top.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Barra Lateral -->
+  <div class="sidebar">
+    <h1 class="logo">Mdb</h1>
+    <nav class="menu">
+      <!-- Botão Upload -->
+      <label for="upload" class="menu-item">
+        <div class="upload-icon">
+          <i class="fas fa-cloud-upload-alt"></i>
+        </div>
+        Upload
+      </label>
+      <input type="file" id="upload" name="file" accept=".csv" style="display:none" />
+
+
+
+
+      <!-- Botão Acesso -->
+      <a href="/acesso" class="menu-item">
+        <div class="acesso-icon">
+          <i class="fas fa-key"></i>
+        </div>
+        Acesso
+      </a>
+
+
+      <!-- Botão Histórico -->
+      <a href="/historico" class="menu-item">
+        <div class="historico-icon">
+          <i class="fas fa-history"></i>
+        </div>
+        Histórico
+      </a>
+
+
+
+
+      <!-- Botão Cadastro -->
+      <a href="/cadastro" class="menu-item">
+        <div class="cadastro-icon">
+          <i class="fas fa-user-plus"></i>
+        </div>
+        Cadastro
+      </a>
+
+
+      <!-- Botão Logout -->
       <form action="{{ url_for('logout') }}" method="POST">
         <button type="submit" class="logout-btn">↪ Logout</button>
-    </form>
-    
+      </form>
+
+
+
+      <!-- Informações do Usuário -->
+      <div class="user-info">
+        <p>Nome: <strong id="user-nome">{{ user_data.nome }}</strong></p>
+        <p>Permissão: <strong id="user-permissao">{{ user_data.permissao }}</strong></p>
+        <p>Função: <strong id="user-funcao">{{ user_data.funcao }}</strong></p>
+      </div>
+  </div>
+
+
+
+  <!-- Conteúdo Principal -->
+  <main class="main">
+    <header class="top-bar"></header>
+    <section class="section hidden" id="upload-section">
+      <div class="chart">
+        <table class="upload-table">
+          <thead>
+            <tr>
+              <th>Planilha</th>
+              <th>Setor</th>
+              <th>Data</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody id="upload-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+
+
+
+
+
+  <!-- Rodapé -->
+  <a href="/informacao" class="footer">
+    <footer class="footer"></footer>
+    <div class="user-options">
+      <button class="help-btn">❔</button>
     </div>
-
-    <!-- Conteúdo Principal -->
-    <main class="main">
-      <header class="top-bar">
-        <label for="upload" class="top-btn upload-btn">📤 Upload</label>
-        <input type="file" id="upload" accept=".csv" style="display: none" />
-        <button class="top-btn export-btn">📥 Exportar</button>
-        <button class="top-btn analytics-btn">📊 Analítico</button>
-      </header>
-
-      <!-- Pop-up de cpf -->
-      <div id="cpf-popup" class="popup">
-        <div class="popup-content">
-          <h3>Informe o CPF</h3>
-          <input type="text" id="cpf-input" placeholder="Digite o cpf" />
-          <button id="cpf-submit">Enviar</button>
-          <button id="cpf-exit" class="exit-btn">Sair</button>
-          <!-- Novo botão Sair -->
-        </div>
-      </div>
-
-      <!-- Seção do Dashboard -->
-      <section class="section">
-        <div class="dashboard">
-          <div class="chart"></div>
-          <div class="side-panel">
-            <div id="topics-container" class="topics-container">
-              <!-- Os dados do CPF serão inseridos aqui -->
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Pop-up de SEARCH -->
-    <div id="search-popup" class="popup">
-      <div class="popup-content">
-        <h3>Pesquisar</h3>
-        <input type="text" id="search-input" placeholder="Pesquisar" />
-        <button id="search-submit">Enviar</button>
-        <button id="search-exit" class="exit-btn">Sair</button>
-        <!-- Novo botão Sair -->
-      </div>
-    </div>
-
-    <!-- Rodapé -->
-    <footer class="footer">
-      <div class="user-options">
-        <a href="{{ url_for('infomacao') }}" class="help-btn">❔</a>
-        &nbsp;&nbsp;&nbsp;<span class="user-name">Usuário</span>
-      </div>
     </footer>
-  </body>
+  </a>
+
+
+  <!-- Pop-up fora da sidebar e menus -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div id="setorPopup" class="popup">
+      <div class="popup-content">
+        <h3>Selecione o Setor e Tipo</h3>
+
+        <select id="setorSelect" class="popup-select">
+          <option value="">--Selecione Setor--</option>
+          <option value="Financeiro">Financeiro</option>
+          <option value="ADM">ADM</option>
+        </select>
+
+        <select id="tipoSelect" class="popup-select">
+          <option value="">--Selecione Tipo--</option>
+          <option value="Pessoa Física">Pessoa Física</option>
+          <option value="Empresarial">Empresarial</option>
+        </select>
+
+        <div class="button-container">
+          <button id="confirmSetorBtn">Confirmar</button>
+          <button id="cancelSetorBtn" class="cancel-btn">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Script final -->
+  <script src="{{ url_for('static', filename='js/planilha.js') }}"></script> <!-- Função comum -->
+  <script src="{{ url_for('static', filename='js/acesso.js') }}"></script> <!-- Funcionalidade do Acesso -->
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script> <!-- Funcionalidade do Index -->
+</body>
+
 </html>

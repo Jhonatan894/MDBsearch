@@ -1,0 +1,627 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  background-color: white; /* Fundo branco */
+  color: #2e3d43; /* Cor do texto principal */
+  min-height: 100vh; /* Garante que o body ocupe pelo menos a altura da viewport */
+}
+
+.popup {
+  display: none; /* Mostrar via JS */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.popup-content {
+  background-color: white;
+  color: #2e3d43;
+  padding: 30px;
+  width: 350px;
+  border-radius: 12px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  max-width: 500px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.popup-content input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.popup-content button,
+.popup-content .cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.popup-content button {
+  background-color: #007bff;
+}
+
+.popup-content .cancel-btn {
+  background-color: #ff5c5c;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 180px;
+  background-color: #2e3d43;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: width 0.3s;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  box-shadow: 8px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-size: 17px;
+}
+
+.menu-item:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 13px 40px;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0.95;
+}
+
+.user-info {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.user-info p {
+  margin: 4px 0;
+}
+
+.user-info span {
+  font-weight: bold;
+}
+
+/* Conteúdo Principal */
+.main,
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  background-color: white;
+}
+
+.top-bar div,
+.top-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.top-bar div:hover,
+.top-btn:hover {
+  transform: scale(1.1);
+  background-color: #e0e0e0;
+}
+
+.upload-btn,
+.download-btn,
+.acesso-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: white;
+  color: #00070a;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.upload-icon img,
+.download-icon img,
+.acesso-icon img,
+.historico-icon img,
+.cadastro-icon img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+/* Dashboard */
+.section {
+  padding: 0;
+  display: block;
+}
+
+.chart {
+  width: auto;
+  margin: auto;
+  background: white;
+  height: auto;
+  padding: 0;
+
+  color: black;
+}
+
+.upload-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.upload-table th,
+.upload-table td {
+  padding: 10px 15px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.upload-table th {
+  color: #2e3d43;
+  font-weight: 600;
+}
+
+.upload-table td {
+  font-weight: 400;
+}
+
+#upload-table-body tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Rodapé */
+.footer,
+.user-options {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  background-color: #2e3d43;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.user-options {
+  margin: 0;
+  padding: 0;
+}
+
+.help-btn,
+.settings-btn,
+.user-name {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.help-btn:hover,
+.settings-btn:hover {
+  opacity: 0.15;
+}
+
+.user-name {
+  font-size: 16px;
+}
+
+/* Elementos adicionais */
+.file-list {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.file-list li {
+  background: #ffffff1a;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.info-display-container,
+.side-panel,
+.cpf-input-container,
+.info-display-container.visible,
+.side-panel.visible,
+.cpf-input-container.visible {
+  display: block;
+}
+
+/* Logo */
+.logo {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 28px;
+  font-weight: 500;
+  color: white;
+}
+
+.table-container {
+  background-color: white;
+  color: #000;
+  height: 600px;
+  padding: 0;
+
+  margin: 40px 20px 20px;
+  flex: 1;
+  overflow: auto;
+}
+
+table,
+.excel-tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td,
+.excel-tabela th,
+.excel-tabela td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  text-align: left;
+}
+
+th,
+.excel-tabela th {
+  color: #2e3d43;
+  font-weight: 700;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+td {
+  font-weight: 500;
+}
+
+tr:hover,
+#planilha tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* Botões da tabela */
+.btn,
+.btn-delete {
+  padding: 6px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn-delete {
+  color: red;
+  font-size: 20px;
+  background: none;
+  transition: transform 0.2s;
+}
+
+.btn-delete:hover {
+  transform: scale(1.2);
+}
+
+/* Botões abaixo da planilha */
+#planilha-controles button {
+  background-color: white;
+  color: #2e3d43;
+  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+#planilha-controles button:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* Botões internos de colunas Excel */
+.excel-tabela th button {
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Container da planilha */
+
+/* Tabela do elemento planilha */
+#planilha table {
+  width: 100%;
+  border-collapse: collapse;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+#planilha th,
+#planilha td {
+  border: 1px solid black;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+#planilha th {
+  font-weight: bold;
+}
+
+#planilha button {
+  background: none;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#planilha button:hover {
+  color: darkred;
+}
+
+/* ============================
+   Pop-up
+============================ */
+
+.popup-content {
+  background-color: white;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  text-align: center;
+  color: #2e3d43;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content input[type="text"],
+.popup-content input {
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.popup-content label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.popup-content .field-select {
+  margin-top: 10px;
+}
+
+.popup-content button {
+  background-color: #007bff;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.popup-content .cancel-btn {
+  background-color: #ff5c5c;
+}
+
+/* ============================
+   Campos e Checkboxes
+============================ */
+#checkbox-campos {
+  text-align: left;
+  margin-top: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+#checkbox-campos label,
+#popup-campos label {
+  display: flex;
+  align-items: center;
+  height: auto;
+  min-height: 36px;
+  font-size: 16px;
+  gap: 8px;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+#checkbox-campos label input[type="checkbox"],
+#popup-campos label input[type="checkbox"] {
+  transform: scale(1.2);
+  margin: 0;
+  vertical-align: middle;
+}
+
+#checkbox-campos label:hover,
+#popup-campos label:hover {
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  padding-left: 4px;
+}
+
+#popup-campos .popup-content label {
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#popup-campos .popup-content input[type="checkbox"] {
+  margin-left: 8px;
+  transform: scale(1.2);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.checkbox-row label {
+  margin-left: 6px;
+}
+
+#checkbox-campos .checkbox-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Alinha checkbox e texto corretamente */
+.popup-content label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: black;
+}
+
+/* Opcional: estiliza o checkbox */
+.popup-content input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+#planilha-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 0 5px rgba(0,  0,  0,  0.1);
+}
+
+/* Ajustar espaçamento da tabela interna */
+#planilha table {
+  font-size: 14px;
+}
+
+#planilha th,
+#planilha td {
+  padding: 6px 10px;
+}
+.footer {
+  position: fixed;
+  bottom: 10px;
+  left: 220px; /* Alinhado com o conteúdo principal */
+  background-color: white; /* Fundo branco para combinar */
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: #2e3d43; /* Cor do texto para contrastar */
+  font-size: 16px;
+  font-weight: bold;
+}

@@ -280,7 +280,7 @@ def registrar():
 def carregar_metadados(nome_arquivo):
     metadata_path = os.path.join(app.config['UPLOAD_FOLDER'], nome_arquivo + '.json')
     if os.path.exists(metadata_path):
-        with open(metadata_path, 'r') as f:
+        with open(metadata_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     return None
 

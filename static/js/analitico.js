@@ -91,13 +91,18 @@ document.addEventListener("DOMContentLoaded", () => {
             type: 'bar',
             data: {
               labels: dados.labels,
-              datasets: dados.datasets.map(ds => ({
-                label: ds.label,
-                data: ds.data,
-                backgroundColor: 'rgba(0,153,255,0.6)',
-                borderColor: 'rgba(0,153,255,1)',
-                borderWidth: 1
-              }))
+              datasets: dados.datasets.map((ds, index) => {
+                // Gera uma cor diferente para cada barra (usando HSL para ter muitas variações)
+                const backgroundColors = ds.data.map((_, idx) => `hsl(${(idx * 60) % 360}, 70%, 60%)`);
+
+                return {
+                  label: ds.label,
+                  data: ds.data,
+                  backgroundColor: backgroundColors,
+                  borderColor: backgroundColors,
+                  borderWidth: 1
+                };
+              })
             },
             options: {
               responsive: true,

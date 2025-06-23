@@ -1,0 +1,6 @@
+TransacaoID,Data,Lancamento,Tipo,Valor,Conta,Beneficiario
+101,2025-06-01,Pagamento de fornecedor,Débito,1500.0,Banco do Brasil,Ana Souza ME
+102,2025-06-02,Recebimento de cliente,Crédito,2300.0,Itaú,Cliente XYZ
+103,2025-06-03,Reembolso viagem,Débito,320.5,Santander,Carlos Lima
+104,2025-06-04,Investimento aplicado,Débito,5000.0,Banco Inter,XP Investimentos
+105,2025-06-05,Recebimento serviço,Crédito,1250.0,Bradesco,Serviço ABC

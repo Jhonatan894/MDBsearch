@@ -1,0 +1,38 @@
+{
+  "setor": "Financeiro",
+  "tipo": "Pessoa Física",
+  "data": "2025-06-20",
+  "usuario": "gerente",
+  "conteudo": [
+    {
+      "Data": "2025-01-01",
+      "Receita": "1000",
+      "Despesa": "500",
+      "Lucro": "500"
+    },
+    {
+      "Data": "2025-01-02",
+      "Receita": "1500",
+      "Despesa": "700",
+      "Lucro": "800"
+    },
+    {
+      "Data": "2025-01-03",
+      "Receita": "1200",
+      "Despesa": "600",
+      "Lucro": "600"
+    },
+    {
+      "Data": "2025-01-04",
+      "Receita": "1700",
+      "Despesa": "800",
+      "Lucro": "900"
+    },
+    {
+      "Data": "2025-01-05",
+      "Receita": "1600",
+      "Despesa": "750",
+      "Lucro": "850"
+    }
+  ]
+}

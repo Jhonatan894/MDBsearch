@@ -1,0 +1,106 @@
+<!-- analitico.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analitico - MDB</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/analitico.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="{{ url_for('static', filename='js/analitico.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1 class="logo">
+      <a href="/" class="logo-link" style="color: inherit; text-decoration: none;">Mdb</a>
+    </h1>
+    <nav class="menu">
+
+
+      <a href="/acesso" class="menu-item">
+        <div class="acesso-icon">
+          <i class="fas fa-key"></i>
+        </div>
+        Acesso
+      </a>
+
+      <a href="/historico" class="menu-item">
+        <div class="Historico-icon">
+          <i class="fas fa-history"></i>
+        </div>
+        Historico
+      </a>
+
+      <a href="/cadastro" class="menu-item">
+        <div class="cadastro-icon">
+          <i class="fas fa-key"></i>
+        </div>
+        Cadastro
+      </a>
+
+
+    </nav>
+
+    <form action="#" method="POST">
+      <button type="submit" class="logout-btn">↪ Logout</button>
+    </form>
+
+    <!-- Informações do Usuário -->
+    <div class="user-info">
+      <p>Nome: <strong id="user-nome">{{ user_data.nome }}</strong></p>
+      <p>Permissão: <strong id="user-permissao">{{ user_data.permissao }}</strong></p>
+      <p>Função: <strong id="user-funcao">{{ user_data.funcao }}</strong></p>
+    </div>
+  </div>
+
+  <main class="main">
+    <section class="section" id="upload-section">
+      <div class="chart">
+        <table class="upload-table">
+          <thead>
+            <tr>
+              <th>Planilha</th>
+              <th>Setor</th>
+              <th>Data</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody id="upload-table-body"></tbody>
+        </table>
+      </div>
+      <canvas id="grafico-csv"></canvas>
+    </section>
+  </main>
+
+  <!-- Popup de seleção de campos -->
+  <div class="popup" style="display: none" id="popup-selecao-campos">
+    <div class="popup-content">
+      <h3>Selecione os campos do CSV:</h3>
+      <div id="checkbox-campos"></div>
+      <button id="btn-confirmar-colunas">OK</button>
+    </div>
+  </div>
+
+  <!-- Popup do Gráfico -->
+  <div class="popup" style="display: none;" id="popup-grafico">
+    <div class="popup-content">
+      <h3>Gráfico Analítico</h3>
+      <canvas id="canvas-grafico-popup"></canvas>
+      <button onclick="fecharPopupGrafico()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="user-options">
+      <button class="help-btn">❔</button>
+    </div>
+  </footer>
+</body>
+
+</html>

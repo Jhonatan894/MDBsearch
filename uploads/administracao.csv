@@ -1,0 +1,6 @@
+FuncionarioID,Nome,Cargo,Projeto,InicioProjeto,Prazo,Responsável
+201,Marcos Pereira,Assistente Administrativo,Implantação ERP,2025-05-20,2025-06-30,Fernando Silva
+202,Beatriz Costa,Secretária,Revisão de documentos,2025-06-01,2025-06-10,Ana Paula
+203,Renato Dias,Analista Administrativo,Atualização sistema interno,2025-06-03,2025-06-20,Camila Mendes
+204,Sandra Lima,Coordenadora,Organização de arquivos,2025-06-05,2025-06-15,João Pedro
+205,Thiago Nunes,Auxiliar,Controle de estoque,2025-06-07,2025-06-12,Letícia Rocha

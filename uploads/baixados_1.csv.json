@@ -1,0 +1,43 @@
+{
+  "setor": "Financeiro",
+  "tipo": "Empresarial",
+  "data": "2025-06-23",
+  "usuario": "gerente",
+  "conteudo": [
+    {
+      "Nome": "João Silva",
+      "Cliente": "Cliente A",
+      "Descrição": "Compra Material",
+      "Valor1": "1500",
+      "Valor2": "200"
+    },
+    {
+      "Nome": "Maria Souza",
+      "Cliente": "Cliente B",
+      "Descrição": "Serviço Prestado",
+      "Valor1": "2500",
+      "Valor2": "300"
+    },
+    {
+      "Nome": "Carlos Lima",
+      "Cliente": "Cliente C",
+      "Descrição": "Pagamento Recebido",
+      "Valor1": "1800",
+      "Valor2": "150"
+    },
+    {
+      "Nome": "Ana Paula",
+      "Cliente": "Cliente D",
+      "Descrição": "Compra Equipamento",
+      "Valor1": "2200",
+      "Valor2": "400"
+    },
+    {
+      "Nome": "Pedro Gomes",
+      "Cliente": "Cliente E",
+      "Descrição": "Serviço de Manutenção",
+      "Valor1": "1700",
+      "Valor2": "250"
+    }
+  ]
+}

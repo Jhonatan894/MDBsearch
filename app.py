@@ -107,7 +107,7 @@ def acesso():
     return render_template('acesso.html', user_data=user_data, planilhas=uploads_realizados)  # Se estiver logado, carrega a página principal
 
 
-# Alteração na rota para ler diretamente o CSV
+# rota para ler diretamente o CSV
 @app.route('/dados-planilha/<nome_arquivo>', methods=['GET'])
 def dados_planilha(nome_arquivo):
     if 'user_id' not in session:
@@ -139,7 +139,7 @@ def dados_planilha(nome_arquivo):
         return jsonify({'error': f'Erro ao processar o arquivo CSV: {str(e)}'}), 500
 
 
-
+#ROTA ANALII
 
 
 #LOGOUT
@@ -339,6 +339,101 @@ def historico():
             arquivos.append(filename)
     
     return render_template('historico.html', user_data=user_data, arquivos=arquivos)
+
+
+#ANALITICO
+@app.route('/analitico')
+def analitico():
+    if 'user_id' not in session:
+        return redirect('/login')
+
+    user_data = {
+        "nome": session['user']['nome'],
+        "permissao": session['user']['permissao'],
+        "funcao": session['user']['funcao']
+    }
+
+    # Passa os uploads para o template
+    return render_template('analitico.html', user_data=user_data, planilhas=uploads_realizados)
+
+# Rota para listar arquivos CSV FINANCEIRO
+@app.route('/api/arquivos_csv')
+def listar_arquivos_csv():
+    arquivos = []
+
+    for nome_arquivo in os.listdir(app.config['UPLOAD_FOLDER']):
+        if nome_arquivo.endswith('.csv'):
+            metadata_path = os.path.join(app.config['UPLOAD_FOLDER'], nome_arquivo + '.json')
+
+            if os.path.isfile(metadata_path):
+                with open(metadata_path, 'r', encoding='utf-8') as f:
+                    metadados = json.load(f)
+            else:
+                metadados = {}
+
+            if metadados.get('setor') == 'Financeiro':  # filtra só financeiro
+                arquivos.append({
+                    "nome": nome_arquivo,
+                    "setor": metadados.get('setor', ''),
+                    "data": metadados.get('data', ''),
+                    "tipo": metadados.get('tipo', ''),
+                    "usuario": metadados.get('usuario', ''),
+                    "colunas": list(metadados.get('conteudo')[0].keys()) if metadados.get('conteudo') else []
+                })
+
+    return jsonify(arquivos)
+
+# Rota para retornar os dados para o gráfico gerado a partir do CSV selecionado
+@app.route('/api/dados_grafico', methods=['POST'])
+def dados_grafico():
+    data = request.json
+    nome_arquivo = data.get('nome_arquivo')
+    colunas_selecionadas = data.get('colunas', [])
+
+    if not nome_arquivo:
+        return jsonify({"error": "Nome do arquivo não fornecido"}), 400
+
+    caminho_arquivo = os.path.join(UPLOAD_FOLDER, nome_arquivo)
+    if not os.path.isfile(caminho_arquivo):
+        return jsonify({"error": "Arquivo não encontrado"}), 404
+
+    # Lê o CSV com pandas
+    try:
+        df = pd.read_csv(caminho_arquivo)
+    except Exception as e:
+        return jsonify({"error": f"Erro ao ler CSV: {str(e)}"}), 500
+
+    # Filtra colunas se especificadas
+    if colunas_selecionadas:
+        colunas_validas = [col for col in colunas_selecionadas if col in df.columns]
+        df = df[colunas_validas]
+    else:
+        colunas_validas = list(df.columns)
+
+    # Escolhe coluna de labels (Nome / Cliente / Descrição / ou índice numérico)
+    if 'Nome' in df.columns:
+        labels = df['Nome'].astype(str).tolist()
+    elif 'Cliente' in df.columns:
+        labels = df['Cliente'].astype(str).tolist()
+    elif 'Descrição' in df.columns:
+        labels = df['Descrição'].astype(str).tolist()
+    else:
+        labels = df.index.astype(str).tolist()
+
+    dados_grafico = {
+        "labels": labels,
+        "datasets": []
+    }
+
+    # Gera os datasets numéricos
+    for coluna in df.columns:
+        if pd.api.types.is_numeric_dtype(df[coluna]):
+            dados_grafico["datasets"].append({
+                "label": coluna,
+                "data": df[coluna].fillna(0).tolist()
+            })
+
+    return jsonify(dados_grafico)
 
 
 

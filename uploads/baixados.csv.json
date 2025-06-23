@@ -1,0 +1,15 @@
+{
+  "setor": "Financeiro",
+  "tipo": "Empresarial",
+  "data": "2025-06-23",
+  "usuario": "gerente",
+  "conteudo": [
+    {
+      "Nome": "João Silva",
+      "Cliente": "Cliente A",
+      "Descrição": "Compra Material",
+      "Valor1": "1500",
+      "Valor2": "200%"
+    }
+  ]
+}

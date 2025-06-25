@@ -1,4 +1,4 @@
-O mdbsearch é um sistema web que permite o upload e busca de arquivos CSV, focado principalmente em realizar consultas de CPF de maneira simples e rápida. O sistema é projetado para ser utilizado por usuários autenticados, com funcionalidades de upload de arquivos, armazenamento e pesquisa de dados específicos do arquivo, com a possibilidade de realizar ações diferenciadas conforme o nível de permissão do usuário.
+O mdbsearch é um sistema web que permite o upload e busca de arquivos CSV. O sistema é projetado para ser utilizado por usuários autenticados, com funcionalidades de upload de arquivos, armazenamento e pesquisa de dados específicos do arquivo, com a possibilidade de realizar ações diferenciadas conforme o nível de permissão do usuário.
 
 Funcionalidades
 Login e autenticação de usuários: Permite que os usuários façam login para acessar o sistema.

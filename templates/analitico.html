@@ -46,7 +46,8 @@
 
     </nav>
 
-    <form action="#" method="POST">
+    <!-- Botão de logout (envia POST para encerrar a sessão) -->
+    <form action="{{ url_for('logout') }}" method="POST">
       <button type="submit" class="logout-btn">↪ Logout</button>
     </form>
 
